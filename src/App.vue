@@ -1,6 +1,10 @@
 <template>
 	<div id="app">
 		<h1>{{ joke }}</h1>
+		<footer>
+			<div>Thank you</div>
+			<img src="https://minotar.net/avatar/jschlatt.png" />
+		</footer>
 	</div>
 </template>
 
@@ -34,11 +38,32 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-family: RCT2;
+	color: #fff;
 }
 
 #app > h1 {
-	font-family: RCT2;
-	color: #fff;
 	font-size: 5em;
+	text-align: center;
+}
+
+#app > footer {
+	position: absolute;
+	bottom: 0;
+	margin: 0.5em 0;
+}
+
+#app > footer > div {
+	font-size: 1.5em;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#app > footer > img {
+	display: inline-block;
+	vertical-align: middle;
+	height: 1.5em;
+	margin-left: 0.6em;
+	filter: drop-shadow(0 0 4px #ffffff88);
 }
 </style>
