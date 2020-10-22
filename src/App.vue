@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<h1>{{ joke }}</h1>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	name: "App",
+	data() {
+		return {
+			joke: "",
+		};
+	},
+	mounted() {
+		axios
+			.get("https://official-joke-api.appspot.com/jokes/general/random")
+			.then((res) => (this.joke = res.data[0].setup));
+	},
+};
 </script>
 
 <style>
+@font-face {
+	font-family: "RCT2";
+	src: url("./assets/RCT2.ttf");
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#app > h1 {
+	font-family: RCT2;
+	color: #fff;
+	font-size: 5em;
 }
 </style>
